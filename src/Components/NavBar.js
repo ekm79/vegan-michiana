@@ -12,14 +12,21 @@ const NavContainer = Styled.div `
     background: #efebcb;
     position: relative;
     z-index: 5;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+
 `;
 
 const Links = Styled.div `
     display: flex;
-    width: 60%;
+    width: 70%;
     justify-content: space-between;
     padding: 20px 50px 20px 20px;
-    @media (max-width: 500px) {
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+    @media (max-width: 480px) {
         display: none;
     }
    
@@ -28,7 +35,7 @@ const Links = Styled.div `
 const NavLink = Styled.p `
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
-    @media (max-width: 800px) {
+    @media (max-width: 768px) {
         font-size: 16px;
     }
 `;
@@ -37,7 +44,7 @@ const Beanburger = Styled.div `
     display: none;
     height: 100px;
     width: 100px;
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
         display: flex;
     }
     &:hover {
@@ -45,7 +52,14 @@ const Beanburger = Styled.div `
 `;
 
 const Logo = Styled.img `
-    width: 20%;
+    width: 100%
+`;
+
+const ImageContainer = Styled.div `
+    width: 18%;
+    @media (max-width: 768px) {
+        width: 30%;
+    }
 `;
 
 class NavBar extends React.Component {
@@ -57,14 +71,17 @@ class NavBar extends React.Component {
     render() {
         return (
             <NavContainer>
-                <img src="/images/vm-logo-small-final.jpg" alt="logo" width="200px" height="auto"/>
+                <ImageContainer>
+                <Logo src="/images/vm-logo-small-final.jpg" alt="logo"/>
+                </ImageContainer>
+                
                 <Links>
-                    <NavLink><Link to="/">Home</Link></NavLink>
-                    <NavLink><Link to="/about">About</Link></NavLink>
-                    <NavLink>Resources</NavLink>
-                    <NavLink>Calendar</NavLink>
-                    <NavLink>Blog</NavLink>
-                    <NavLink>Contact</NavLink>
+                    <NavLink><Link to="/" style={{textDecoration: "none", color: "black"}}>Home</Link></NavLink>
+                    <NavLink><Link to="/about" style={{textDecoration: "none", color: "black"}}>About</Link></NavLink>
+                    <NavLink><Link to="/resources" style={{textDecoration: "none", color: "black"}}>Resources</Link></NavLink>
+                    <NavLink><Link to="/calendar" style={{textDecoration: "none", color: "black"}}>Calendar</Link></NavLink>
+                    <NavLink><Link to="/blog" style={{textDecoration: "none", color: "black"}}>Blog</Link></NavLink>
+                    <NavLink><Link to="/contact" style={{textDecoration: "none", color: "black"}}>Contact</Link></NavLink>
                 </Links>
                 <Beanburger>
                     <img src="/images/hamburger.png" width="100px" height="100px"/>

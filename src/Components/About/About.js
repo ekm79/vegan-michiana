@@ -1,18 +1,15 @@
 import React from 'react';
 import Styled from 'styled-components';
 import Member from './Member';
+import {leaders} from './MemberData';
+import { Header, Text } from './../Styles/sharedStyles';
+import { toggleLeaderRama, 
+    toggleLeaderCrystal, 
+    toggleLeaderNekeisha, 
+    toggleLeaderTonia } from './../../Actions';
+import { connect } from 'react-redux';
 
-const Header = Styled.div `
-    font-size: 22px;
-    color: #93b62f;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-`;
 
-const Text = Styled.p `
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-`;
 
 const Block= Styled.div `
     display: flex;
@@ -40,21 +37,34 @@ const ImageBlock = Styled.div `
 
 const ImgWidget = Styled.img `
     border-radius: 50%;
+    box-shadow: -2px 5px 10px 5px grey;
+    cursor: pointer;
 `;
 
 const Rule = Styled.hr `
     width: 80%;
-    border: 2px solid #9b0624;
+    border: 1px solid #9b0624;
 `;
 
 const SecondaryBlock = Styled.div `
     display: flex;
 `;
 
+const LeaderBlock = Styled.div `
+    position: absolute;
+    z-index: 5;
+    width: 60%;
+    box-shadow: -2px 5px 10px 5px grey;
+`;
+
+
+
 class About extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
     }
+
 
     render() {
         return (
@@ -85,10 +95,41 @@ class About extends React.Component {
                     Leadership
                 </Header>
                 <ImageBlock>
-                    <ImgWidget src='/images/rama.jpg' width="100px"  onMouseOver={<Member/>}/>
-                    <ImgWidget src='/images/nekeisha.jpg' width="100px" height="auto"/>
-                    <ImgWidget src='/images/crystal.jpg' width="100px" height="auto"/>
-                    <ImgWidget src='/images/tonia.jpg' width="100px" height="auto"/>
+                   {/* {leaders.map(leader => {
+                        return (
+                            <div>
+                            <ImgWidget src={leader.img} width="100px" key={leader.Name} onMouseOver={this.props.toggleLeader} onMouseLeave={this.props.toggleLeader}/>
+                            {this.props.showLeader ? 
+                                <LeaderBlock>
+                                    <Member name={leader.Name} info={leader.info} img={leader.img} key={leader.name}/>
+                                </LeaderBlock> : null}
+                            </div>
+                        )
+                    })}*/}
+
+                    <ImgWidget src={leaders[0].img} width="100px" onClick={this.props.toggleLeaderRama} />
+                        {this.props.showLeaderRama ? 
+                                <LeaderBlock onClick={this.props.toggleLeaderRama}>
+                                    <Member name={leaders[0].Name} info={leaders[0].info} img={leaders[0].img} />
+                                </LeaderBlock> : null}
+                    <ImgWidget src={leaders[1].img} width="100px" onClick={this.props.toggleLeaderNekeisha} />
+                        {this.props.showLeaderNekeisha ? 
+                                <LeaderBlock onClick={this.props.toggleLeaderNekeisha}>
+                                    <Member name={leaders[1].Name} info={leaders[1].info} img={leaders[1].img}/>
+                                </LeaderBlock> : null}
+                    <ImgWidget src={leaders[2].img} width="100px" onClick={this.props.toggleLeaderCrystal} />
+                        {this.props.showLeaderCrystal ? 
+                                <LeaderBlock onClick={this.props.toggleLeaderCrystal}>
+                                    <Member name={leaders[2].Name} info={leaders[2].info} img={leaders[2].img} />
+                                </LeaderBlock> : null}
+                    <ImgWidget src={leaders[3].img} width="100px" onClick={this.props.toggleLeaderTonia} />
+                        {this.props.showLeaderTonia ? 
+                                <LeaderBlock onClick={this.props.toggleLeaderTonia} >
+                                    <Member name={leaders[3].Name} info={leaders[3].info} img={leaders[3].img} />
+                                </LeaderBlock> : null}
+                    
+                    
+
                 </ImageBlock>
             </PrimaryBlock>
 
@@ -120,4 +161,20 @@ class About extends React.Component {
     }
 }
 
-export default About;
+const mapStateToProps = state => {
+    return {
+      showLeaderRama: state.toggle.showLeaderRama,
+      showLeaderNekeisha: state.toggle.showLeaderNekeisha,
+      showLeaderCrystal: state.toggle.showLeaderCrystal,
+      showLeaderTonia: state.toggle.showLeaderTonia,
+      
+    }
+  }
+  
+  const mapActionsToProps = {
+    toggleLeaderRama: toggleLeaderRama,
+    toggleLeaderNekeisha: toggleLeaderNekeisha,
+    toggleLeaderCrystal: toggleLeaderCrystal,
+    toggleLeaderTonia: toggleLeaderTonia
+  }
+  export default connect( mapStateToProps, mapActionsToProps)(About);

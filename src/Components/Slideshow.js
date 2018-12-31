@@ -23,6 +23,7 @@ const BgImage = Styled.img `
     height: auto;
     z-index: 1;
     position: absolute;
+    overflow: hidden;
 `;
 
 
@@ -30,7 +31,7 @@ const Slideshow = () => {
     return (
         <Fade {...fadeProperties}>
           <div className="each-fade">
-            <div className="image-container">
+            <div className="image-container" style={{height:"100vh"}}>
               <img src={fadeImages[0]} />
             </div>
           </div>
