@@ -59,9 +59,9 @@ class Contact extends React.Component {
                 Whether you’re vegan, semi-vegan, vegetarian, or simply vegan-curious, we invite you to contact us in any of the below ways:
                 </Text>
                 <IconBlock>
-                    <FB src="./../../images/facebook.png" />
-                    <FB src="./../../images/instagram.png" />
-                    <FB src="./../../images/email.png" />
+                    <td onClick={()=> window.open("http://www.facebook.com/veganmichiana/")}><FB src="./../../images/facebook.png" /></td>
+                    <td onClick={()=> window.open("http://www.instagram.com/vegan_michiana/")}><FB src="./../../images/instagram.png" /></td>
+                    <a href="mailto:info@veganmichiana.com"><FB src="./../../images/email.png" /></a>
                 </IconBlock>
 
                 <Text>
@@ -70,7 +70,7 @@ class Contact extends React.Component {
                 <Newsletter>
                     <Input 
                         type="text"
-                        placeholder="email"/>
+                        placeholder="Enter your email"/>
                     <Button>Submit</Button>
                 </Newsletter>
                 

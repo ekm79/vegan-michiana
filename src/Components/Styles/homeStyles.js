@@ -126,7 +126,7 @@ export const TextBlock_Tb = Styled.div `
     display: flex;
     width: 100vw;
     padding-left: 20px;
-    position: fixed;
+    
     z-index: 5;
     bottom: 20px;
     right: 20px;

@@ -6,8 +6,12 @@ import { Header, Text } from './../Styles/sharedStyles';
 import { toggleLeaderRama, 
     toggleLeaderCrystal, 
     toggleLeaderNekeisha, 
-    toggleLeaderTonia } from './../../Actions';
+    toggleLeaderTonia,
+    toggleDecember, 
+    toggleMarch,
+    toggleNovember } from './../../Actions';
 import { connect } from 'react-redux';
+import {mediaMentions} from './Media';
 
 
 
@@ -85,7 +89,7 @@ class About extends React.Component {
                     improving in that area. Discount grocers like Aldi’s are also getting 
                     in on the game. Our group of vegans has also been growing, and we are 
                     finding each other to offer and receive support and encouragement! See 
-                    our calendar for our upcoming events.</Text>
+                    our <a href="http://www.veganmichiana.com/events">calendar</a> for our upcoming events.</Text>
             </PrimaryBlock>
 
             <Rule/>
@@ -147,6 +151,24 @@ class About extends React.Component {
             </Block>
 
             <Block>
+                <Header>Media Mentions</Header>
+                <Text>
+                    <ul>
+                        <li onClick={this.props.toggleDecember}>December 2018</li>
+                        {this.props.showMediaDec ?
+                        <LeaderBlock>{mediaMentions[0]}</LeaderBlock> : null}
+                        <li onClick={this.props.toggleNovember}>November 2018</li>
+                        {this.props.showMediaNov ?
+                        <LeaderBlock>{mediaMentions[1]}</LeaderBlock> : null}
+                        <li onClick={this.props.toggleMarch}>March 2018</li>
+                        {this.props.showMediaMarch ?
+                        <LeaderBlock>{mediaMentions[2]}</LeaderBlock> : null}
+                    </ul>
+                </Text>
+            </Block>
+        </SecondaryBlock>
+
+        <Block>
                 <Header>Stay in touch</Header>
                 <Text>We look forward to connecting with you. You can find us on Facebook and 
                     on Instagram, and you can easily reach us on our Contact page. We also 
@@ -154,7 +176,6 @@ class About extends React.Component {
                     upcoming events or tell you the latest vegan news. Sign-up on the 
                     sidebar or the Contact page.</Text>
             </Block>
-        </SecondaryBlock>
             
             </div>
         )
@@ -167,6 +188,9 @@ const mapStateToProps = state => {
       showLeaderNekeisha: state.toggle.showLeaderNekeisha,
       showLeaderCrystal: state.toggle.showLeaderCrystal,
       showLeaderTonia: state.toggle.showLeaderTonia,
+      showMediaDec: state.toggle.showMediaDec,
+      showMediaNov: state.toggle.showMediaNov,
+      showMediaMarch: state.toggle.showMediaMarch
       
     }
   }
@@ -175,6 +199,9 @@ const mapStateToProps = state => {
     toggleLeaderRama: toggleLeaderRama,
     toggleLeaderNekeisha: toggleLeaderNekeisha,
     toggleLeaderCrystal: toggleLeaderCrystal,
-    toggleLeaderTonia: toggleLeaderTonia
+    toggleLeaderTonia: toggleLeaderTonia,
+    toggleDecember: toggleDecember,
+    toggleNovember: toggleNovember,
+    toggleMarch: toggleMarch
   }
   export default connect( mapStateToProps, mapActionsToProps)(About);

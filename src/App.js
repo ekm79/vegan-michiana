@@ -5,7 +5,7 @@ import Home from './Components/Home';
 import About from './Components/About/About';
 import Contact from './Components/Contact';
 import Blog from './Components/Blog/BlogRoot';
-import Calendar from './Components/Calendar';
+import Calendar from './Components/Calendar/Calendar';
 import Resources from './Components/Resources/ResourcesRoot';
 import Styled from 'styled-components';
 

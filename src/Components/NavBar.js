@@ -15,6 +15,10 @@ const NavContainer = Styled.div `
     @media (max-width: 768px) {
         flex-direction: column;
     }
+    @media (max-width: 480px) {
+        flex-direction: row;
+        align-items: center;
+    }
 
 `;
 
@@ -42,8 +46,9 @@ const NavLink = Styled.p `
 
 const Beanburger = Styled.div `
     display: none;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
+    padding: 5% 10% 10% 10%;
     @media (max-width: 480px) {
         display: flex;
     }
@@ -60,6 +65,9 @@ const ImageContainer = Styled.div `
     @media (max-width: 768px) {
         width: 30%;
     }
+    @media (max-width: 480px) {
+        width: 60%;
+    }
 `;
 
 class NavBar extends React.Component {
@@ -72,7 +80,7 @@ class NavBar extends React.Component {
         return (
             <NavContainer>
                 <ImageContainer>
-                <Logo src="/images/vm-logo-small-final.jpg" alt="logo"/>
+                    <Logo src="/images/vm-logo-small-final.jpg" alt="logo"/>
                 </ImageContainer>
                 
                 <Links>
