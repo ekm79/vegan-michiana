@@ -7,6 +7,8 @@ import Contact from './Components/Contact';
 import Blog from './Components/Blog/BlogRoot';
 import Calendar from './Components/Calendar/Calendar';
 import Resources from './Components/Resources/ResourcesRoot';
+import SearchProducts from './Components/Resources/Products/SearchProducts';
+import SearchRestaurants from './Components/Resources/Restaurants/SearchRestaurants';
 import Styled from 'styled-components';
 
 const Body = Styled.div `
@@ -37,6 +39,8 @@ class App extends Component {
         <Route path="/blog" component={Blog} />
         <Route path="/resources" component={Resources} />
         <Route path="/calendar" component={Calendar} />
+        <Route path="/resources/search/restaurants" component={SearchRestaurants} />
+        <Route path="/resources/search/products" component={SearchProducts}/>
       </Body>
     );
   }
